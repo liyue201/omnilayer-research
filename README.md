@@ -1,5 +1,3 @@
-### USDT（omnilayer）钱包对接
-
 ### 什么是onmilayer
 omnilayer是基于比特币协议之上的一层协议，主要用于发行基于比特币网络的token，类似于以太坊的ERC20。[omnicore](https://github.com/OmniLayer/omnicore)是onmilayer协议的客户端节点，可以看到其代码是从[bitcoin](https://github.com/bitcoin/bitcoin) fork过来的。omnicore并没有自己的主网，与比特币使用同一个网络。omnilayer有自己的区块链浏览器[omniexplorer](https://omniexplorer.info/)。omnilayer上可以发行很多token，通过property_id来唯一标识。
 
