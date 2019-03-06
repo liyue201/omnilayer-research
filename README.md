@@ -30,7 +30,7 @@ USDT是Tether公司发行的基于omnilayer协议的稳定币，它的property_i
 | 4  | 0000001f|  31 => 货币：USDT |
 | 8  | 000000018a3052b0 |  	66.1339  => 转账金额 |
 
-第二个输出是找零，第三个输出是转账目标的地址，一般是0.00000546 BTC，但不是绝对的。
+第二个输出是找零，第三个输出是转账目标的地址，一般是0.00000546 BTC，但不是绝对的，这个值其实是比特币为了防止粉尘攻击计算出来的最小值，当有隔离验证时一般是0.00000294 BTC。
 
 ### 如何对接
 既然omnilayer是比特币基于协议的，那么omnilayer的地址也是比特币的地址。omnicore的命令行客户端叫omnicore-cli，完全支持比特币的命令，同时还扩展了一些命令，[omnicore的JSON RPC](https://github.com/OmniLayer/omnicore/blob/master/src/omnicore/doc/rpc-api.md)也是一样。对于普通转账使用omni_send，如果想指定出矿工费的地址可以使用omni_funded_send。需要注意的是即便指定了付矿工费的地址，发送token的地址还是需要预留一定数量的BTC的。当然这个问题一般无须担心，看到前面的交易了吗，别人给你转账的时候给了多给了0.00000546 BTC，估计这么设计就是为了防止你后面没btc转账吧。矿工费的费率可以在节点的配置文件里面指定。这些RPC接口不仅提供了查询转账等基本功能，你还可以自己组装UTXO构成交易，这种方式更灵活，弊端就是需要多次调用RPC，这里有个教程：[Use the raw transaction API to create a Simple Send transaction](https://github.com/OmniLayer/omnicore/wiki/Use-the-raw-transaction-API-to-create-a-Simple-Send-transaction)。如果你的项目是C++写的，有些接口通过库的形式可以集成到代码中，比如签名。但是要是别的语言就比较麻烦了。
